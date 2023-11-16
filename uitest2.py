@@ -29,7 +29,7 @@ frame = ck.CTkFrame(
 frame.place(relx=0.5, rely=0.5, anchor=ck.CENTER)
 
 
-def button_function():
+def Solve_function():
     goal_state = [[1, 2, 3], [4, 5, 6], [7, 8, 0]]
 
     solution_path = Solver.a_star(m[0], goal_state)
@@ -47,7 +47,8 @@ def button_function():
                     btext = f"{m1[i][j]}"
                 boxes[c].configure(text=btext, fg_color=col)
                 c += 1
-
+def shuffle_function():
+    pass
 
 def get_blank_position(state):
     for i in range(3):
@@ -67,14 +68,22 @@ def movetile(x, y):
 
 
 # Use CTkButton instead of tkinter Button
-button = ck.CTkButton(
+shuffleButton = ck.CTkButton(
     master=root,
-    text="Solve",
-    command=button_function,
+    text="Shuffle",
+    command=shuffle_function,
     font=("Century Gothic", 20, "bold"),
     fg_color="#4F6F52",
 )
-button.place(relx=0.5, rely=0.8, anchor=ck.CENTER)
+shuffleButton.place(relx=0.5, rely=0.75, anchor=ck.CENTER)
+solveButton = ck.CTkButton(
+    master=root,
+    text="Solve",
+    command=Solve_function,
+    font=("Century Gothic", 20, "bold"),
+    fg_color="#4F6F52",
+)
+solveButton.place(relx=0.5, rely=0.85, anchor=ck.CENTER)
 
 m = [[[1, 2, 3], [4, 5, 6], [7, 8, 0]]]
 boxes = []
