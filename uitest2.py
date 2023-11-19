@@ -67,7 +67,7 @@ def movetile(x, y):
             m[0][x][y], m[0][x0][y0] = m[0][x0][y0], m[0][x][y]
 
 
-# Use CTkButton instead of tkinter Button
+
 shuffleButton = ck.CTkButton(
     master=root,
     text="Shuffle",
@@ -76,6 +76,7 @@ shuffleButton = ck.CTkButton(
     fg_color="#4F6F52",
 )
 shuffleButton.place(relx=0.5, rely=0.75, anchor=ck.CENTER)
+
 solveButton = ck.CTkButton(
     master=root,
     text="Solve",
