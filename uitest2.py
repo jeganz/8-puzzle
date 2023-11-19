@@ -47,7 +47,11 @@ def Solve_function():
                     btext = f"{m1[i][j]}"
                 boxes[c].configure(text=btext, fg_color=col)
                 c += 1
+
 def shuffle_function():
+    pass
+
+def input_function():
     pass
 
 def get_blank_position(state):
@@ -75,7 +79,16 @@ shuffleButton = ck.CTkButton(
     font=("Century Gothic", 20, "bold"),
     fg_color="#4F6F52",
 )
-shuffleButton.place(relx=0.5, rely=0.75, anchor=ck.CENTER)
+shuffleButton.place(relx=0.42, rely=0.75, anchor=ck.CENTER)
+
+inputButton = ck.CTkButton(
+    master=root,
+    text="Custom",
+    command=input_function,
+    font=("Century Gothic", 20, "bold"),
+    fg_color="#4F6F52",
+)
+inputButton.place(relx=0.58, rely=0.75, anchor=ck.CENTER)
 
 solveButton = ck.CTkButton(
     master=root,
