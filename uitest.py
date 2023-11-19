@@ -43,9 +43,6 @@ def inputing():
             boxes[3*i+j].configure(text=btext,fg_color=col)
     button.configure(text='Solve',command=button_function)
 
-def checkvalidity(e,i,j):
-    pass
-
 def validate(P):
     def validip(P):
         for i in inputs:
@@ -92,6 +89,7 @@ button.place(relx=0.1, rely=0.1, anchor=ck.CENTER)
 
 boxes=[]
 inputs=[]
+
 for i in range(3):
     for j in range(3):
         if m[i][j]==0:

@@ -51,8 +51,50 @@ def Solve_function():
 def shuffle_function():
     pass
 
-def input_function():
-    pass
+def inputing():
+    for i in inputs:
+        if i.get()=='':
+            return
+    global m
+    for i in range(3):
+        for j in range(3):
+            m[0][i][j]=int(inputs[3*i+j].get())
+            inputs[3*i+j].destroy()
+            if m[0][i][j]==0:
+                col='transparent'
+                btext=''
+            else:
+                col='#739072'
+                btext=f'{m[0][i][j]}'
+            boxes[3*i+j].configure(text=btext,fg_color=col)
+    inputButton.configure(text='Custom',command=input_function)
+    inputs.clear()
+    root.update()
+
+def validate(P): 
+    def validip(P):
+        for i in inputs:
+            if i.get() !='' and P==i.get():
+                return False
+        return True
+    if len(P) == 1 and P.isdigit() and int(P)<9:
+        return validip(P)
+    elif len(P) == 0:
+        # empty Entry is ok
+        return True
+    else:
+        # Anything else, reject it
+        return False
+    
+def input_function(): 
+    inputButton.configure(text='Done',command=inputing)
+    for i in range(3):
+        for j in range(3):
+            vcmd = (root.register(validate), '%P')
+            input=ck.CTkEntry(frame,width=70,height=70,font=('Century Gothic',20,'bold'),fg_color='#739072',corner_radius=10,
+                                    bg_color='transparent',text_color='#3A4D39',border_width=0,justify='center',validate='key',validatecommand=vcmd)
+            input.grid(row=i+1, column=j+1, padx=4, pady=4)
+            inputs.append(input)
 
 def get_blank_position(state):
     for i in range(3):
@@ -101,6 +143,8 @@ solveButton.place(relx=0.5, rely=0.85, anchor=ck.CENTER)
 
 m = [[[1, 2, 3], [4, 5, 6], [7, 8, 0]]]
 boxes = []
+inputs=[]
+
 for i in range(3):
     for j in range(3):
         if m[0][i][j] == 0:
