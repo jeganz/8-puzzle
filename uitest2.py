@@ -2,6 +2,7 @@ from time import sleep
 import tkinter as tk
 import customtkinter as ck
 from uiastar import Solver
+from errorpage import errpopup
 
 # Create the main window
 root = tk.Tk()
@@ -31,22 +32,24 @@ frame.place(relx=0.5, rely=0.5, anchor=ck.CENTER)
 
 def Solve_function():
     goal_state = [[1, 2, 3], [4, 5, 6], [7, 8, 0]]
-
     solution_path = Solver.a_star(m[0], goal_state)
-    for m1 in solution_path:
-        root.update()
-        sleep(0.8)
-        c = 0
-        for i in range(3):
-            for j in range(3):
-                if m1[i][j] == 0:
-                    col = "transparent"
-                    btext = ""
-                else:
-                    col = "#739072"
-                    btext = f"{m1[i][j]}"
-                boxes[c].configure(text=btext, fg_color=col)
-                c += 1
+    if solution_path:
+        for m1 in solution_path:
+            root.update()
+            sleep(0.8)
+            c = 0
+            for i in range(3):
+                for j in range(3):
+                    if m1[i][j] == 0:
+                        col = "transparent"
+                        btext = ""
+                    else:
+                        col = "#739072"
+                        btext = f"{m1[i][j]}"
+                    boxes[c].configure(text=btext, fg_color=col)
+                    c += 1
+    else:
+        errpopup('Solution not Found')
 
 def shuffle_function():
     pass
