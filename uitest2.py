@@ -4,6 +4,8 @@ import customtkinter as ck
 from uiastar import Solver
 from errorpage import errpopup
 
+"Hii"
+
 # Create the main window
 root = tk.Tk()
 root.title("9 Boxes Grid")
