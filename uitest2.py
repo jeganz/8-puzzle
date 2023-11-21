@@ -3,6 +3,7 @@ import tkinter as tk
 import customtkinter as ck
 from uiastar import Solver
 from errorpage import errpopup
+from random import randint
 
 # Create the main window
 root = tk.Tk()
@@ -52,7 +53,28 @@ def Solve_function():
         errpopup('Solution not Found')
 
 def shuffle_function():
-    pass
+    global m
+    i, j = Solver.get_blank_position(m[0])
+
+    action =[(0, 1), (0, -1), (1, 0), (-1, 0)]
+    for _ in range(randint(25,100)):
+        i, j = Solver.get_blank_position(m[0])
+        move=action[randint(0, len(action)-1)]
+        new_i, new_j = i + move[0], j + move[1]
+        if 0 <= new_i < Solver.PUZZLE_SIZE and 0 <= new_j < Solver.PUZZLE_SIZE:
+            m[0][i][j], m[0][new_i][new_j] = m[0][new_i][new_j], m[0][i][j]
+    c=0
+    for i in range(3):
+        for j in range(3):
+            if m[0][i][j] == 0:
+                col = "transparent"
+                btext = ""
+            else:
+                col = "#739072"
+                btext = f"{m[0][i][j]}"
+            boxes[c].configure(text=btext, fg_color=col)
+            c += 1
+
 
 def inputing():
     for i in inputs:
