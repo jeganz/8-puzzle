@@ -7,7 +7,7 @@ from random import randint
 
 # Create the main window
 root = tk.Tk()
-root.title("9 Boxes Grid")
+root.title("8 Puzzle ")
 
 # Set the window size
 window_width = 1000
@@ -137,7 +137,8 @@ def movetile(x, y):
             root.update()
             m[0][x][y], m[0][x0][y0] = m[0][x0][y0], m[0][x][y]
 
-
+heading=ck.CTkLabel(root,text='8 PUZZLE',font=("Century Gothic",50, "bold"),text_color='#3A4D39')
+heading.place(relx=0.5,rely=0.15,anchor=ck.CENTER)
 
 shuffleButton = ck.CTkButton(
     master=root,
