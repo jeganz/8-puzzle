@@ -5,8 +5,6 @@ from uiastar import Solver
 from errorpage import errpopup
 from random import randint
 
-"Hii"
-
 # Create the main window
 root = tk.Tk()
 root.title("9 Boxes Grid")
